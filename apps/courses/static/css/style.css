@@ -1,0 +1,17 @@
+* {
+	padding: 0px;
+    margin: 0px;
+}
+#wrapper{
+    width: 1000px;
+	margin: 0 auto;
+    padding: 20px;
+}
+
+.add{
+    margin-top: 20px;
+    width: 100px;
+}
+.txt{
+    width: 300px;
+}

@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<html>
+  <head>
+    <title>Courses</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+    <body>
+        <div id='wrapper'>
+            <h3>Are you sure you want to delete the following course?</h3>
+            <p>Name:{{course.name}}</p>
+            <p>Description: course.description.desc</p>
+            <form action='/delete/{{course.id}}' method='post'>
+                {% csrf_token %}
+                <a href="/" class = 'btn btn-default'>No</a>
+                <input type='submit' value='Yes! I want to delete this' class='btn btn-danger'>
+            </form>
+        </div>
+    </body>
+</html>

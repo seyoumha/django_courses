@@ -1,0 +1,72 @@
+{% load staticfiles %}
+<html>
+  <head>
+    <title>Courses</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+    <body>
+    <div class='container'>
+        {% if messages %}
+        <ul class="alert-danger">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+        <div class='container'>
+            <h3> Add a New Course</h3>  
+            <form action='/create' method="post" id='course-form'>
+                {% csrf_token %}
+                <div class="form-group">
+                  <div class= "col-md-8">
+                    <p>Name:</p>
+                    <input type='text' class="form-control txt" name='name'>
+                  </div>  
+                </div>
+                <div class="form-group"> 
+                    <div class= "col-md-8"> 
+                      <p>Description:</p>
+                      <textarea class="form-control txt" name='desc'></textarea></div><br/>
+                    </div>
+                    <div class= "col-md-8"> 
+                        <input type='submit' value='Add' class="form-control btn btn-success add col-md-8">
+                    </div>      
+                </div> 
+            </form> 
+            <div class="container">
+                <h3>Courses</h3>
+                <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Course name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Date Added</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {%for course in courses %}
+                            <tr>
+                                <td>{{course.name}}</td>
+                                <td>{{course.description.desc}}</td>
+                                <td>{{course.created_at}}</td>
+                                <td>
+                                <a href="/destroy/{{course.id}}" >Delete</a>&nbsp
+                                </td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+            </div>    
+        </div>
+    </body>
+</html>
+
+
+
+
+
+
+
